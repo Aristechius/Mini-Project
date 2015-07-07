@@ -15,6 +15,7 @@ public class RegistrationUI extends javax.swing.JFrame {
      * Creates new form RegistrationUI
      */
     public RegistrationUI() {
+        RegistrationUI.this.setVisible(true);
         initComponents();
     }
 
@@ -105,6 +106,11 @@ public class RegistrationUI extends javax.swing.JFrame {
         jLabel3.setText("Number of students");
 
         btnNextReg.setText("Next");
+        btnNextReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextRegActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel7.setText("step 1 of 2");
@@ -173,6 +179,12 @@ public class RegistrationUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNextRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextRegActionPerformed
+    // linking this UI with the next UI which is Sheet-Generation)
+        SheetGenerationUI link1= new SheetGenerationUI();
+        RegistrationUI.this.setVisible(false);
+    }//GEN-LAST:event_btnNextRegActionPerformed
 
     /**
      * @param args the command line arguments

@@ -15,6 +15,7 @@ public class HomePage extends javax.swing.JFrame {
      * Creates new form HomePage
      */
     public HomePage() {
+        HomePage.this.setVisible(true);
         initComponents();
     }
 
@@ -33,8 +34,8 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rBtnLogin = new javax.swing.JRadioButton();
+        rBtnRegistration = new javax.swing.JRadioButton();
         btnHomeNext = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel() {
@@ -52,13 +53,18 @@ public class HomePage extends javax.swing.JFrame {
 
         jLabel2.setText("Select the action you want to perform");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Login");
+        buttonGroup1.add(rBtnLogin);
+        rBtnLogin.setText("Login");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Register A new Class");
+        buttonGroup1.add(rBtnRegistration);
+        rBtnRegistration.setText("Register A new Class");
 
         btnHomeNext.setText("Next");
+        btnHomeNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeNextActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,9 +75,9 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(94, 94, 94)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rBtnRegistration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rBtnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(104, 104, 104)))
                 .addGap(165, 165, 165))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -87,9 +93,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                 .addGap(49, 49, 49)
-                .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rBtnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rBtnRegistration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(25, 25, 25)
                 .addComponent(btnHomeNext)
                 .addContainerGap())
@@ -114,6 +120,22 @@ public class HomePage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHomeNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeNextActionPerformed
+        /* listening to the radio buttons and selecting the UI 
+        to go to based on their selection*/
+        if(rBtnLogin.isSelected())
+        {
+             Login login= new Login();
+             HomePage.this.setVisible(false);
+        }
+        else if(rBtnRegistration.isSelected())
+        {
+            RegistrationUI RegistrationPage= new RegistrationUI();
+            
+            HomePage.this.setVisible(false);
+        }
+    }//GEN-LAST:event_btnHomeNextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,8 +179,11 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rBtnLogin;
+    private javax.swing.JRadioButton rBtnRegistration;
     // End of variables declaration//GEN-END:variables
+
 }
+
+
