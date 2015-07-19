@@ -5,7 +5,7 @@
  */
 
 package my.AttendanceCalculator;
-
+import java.sql.*;
 /**
  *
  * @author aristechius
@@ -29,11 +29,33 @@ public class DatabaseHelper {
      */
     private boolean initialize(){
         // If database file doesn't exist:
-        
+          
         // (1) Create the new database and open it
         
-        // (2) Create the Students table
-        
+    Connection c = null;
+       
+    Statement stmt = null;
+    try {
+      Class.forName("org.sqlite.JDBC");
+      c = DriverManager.getConnection("jdbc:sqlite:record.db");
+      System.out.println("Opened database successfully");
+
+      stmt = c.createStatement();
+      String sql = "CREATE TABLE STUDENTS " +
+                   "(REGNO INT PRIMARY KEY     NOT NULL," +
+                   " FIRSTNAME         TEXT    NOT NULL, " + 
+                   " LASTNAME          TEXT     NOT NULL, " + 
+                   " STAFFID           INT NOT NULL, "; 
+      stmt.executeUpdate(sql);
+      stmt.close();
+      c.close();
+    } catch ( Exception e ) {
+      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+      System.exit(0);
+    }
+    System.out.println("Table created successfully");
+  
+    
         // (3) Create the Staffs table
         
         // (4) Create the Attendees table
