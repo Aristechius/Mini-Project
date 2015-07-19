@@ -15,6 +15,7 @@ public class SheetGenerationUI extends javax.swing.JFrame {
      * Creates new form SheetGenerationUI
      */
     public SheetGenerationUI() {
+        SheetGenerationUI.this.setVisible(true);
         initComponents();
     }
 
@@ -36,6 +37,7 @@ public class SheetGenerationUI extends javax.swing.JFrame {
         regRegNumber = new javax.swing.JTextField();
         btnAddStudent = new javax.swing.JButton();
         btnCreateClass = new javax.swing.JButton();
+        btnBackReg = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -64,16 +66,28 @@ public class SheetGenerationUI extends javax.swing.JFrame {
 
         btnCreateClass.setText("Register Class");
 
+        btnBackReg.setText("Back");
+        btnBackReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackRegActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(btnBackReg)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -88,6 +102,9 @@ public class SheetGenerationUI extends javax.swing.JFrame {
                         .addComponent(btnCreateClass)
                         .addGap(67, 67, 67))))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAddStudent, btnBackReg});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -106,7 +123,8 @@ public class SheetGenerationUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddStudent)
-                    .addComponent(btnCreateClass))
+                    .addComponent(btnCreateClass)
+                    .addComponent(btnBackReg))
                 .addGap(29, 29, 29))
         );
 
@@ -165,6 +183,12 @@ public class SheetGenerationUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddStudentActionPerformed
 
+    private void btnBackRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackRegActionPerformed
+        // redirecting back to the previous page
+        RegistrationUI backbtn= new RegistrationUI();
+        SheetGenerationUI.this.setVisible(false);
+    }//GEN-LAST:event_btnBackRegActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -202,6 +226,7 @@ public class SheetGenerationUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddStudent;
+    private javax.swing.JButton btnBackReg;
     private javax.swing.JButton btnCreateClass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
