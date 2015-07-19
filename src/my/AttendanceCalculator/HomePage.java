@@ -17,6 +17,9 @@ public class HomePage extends javax.swing.JFrame {
     public HomePage() {
         HomePage.this.setVisible(true);
         initComponents();
+        
+        // TODO: Delete this part --- added for testing the database
+        DatabaseHelper db = new DatabaseHelper();
     }
 
     /**
