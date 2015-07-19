@@ -26,6 +26,15 @@ public class DatabaseHelper {
      * needed tables
      */
     private boolean initialize(){
+        // If database file doesn't exist:
+        
+        // (1) Create the new database and open it
+        
+        // (2) Create the Students table
+        
+        // (3) Create the Staffs table
+        
+        // (4) Create the Attendees table
         return true;
     }
     
