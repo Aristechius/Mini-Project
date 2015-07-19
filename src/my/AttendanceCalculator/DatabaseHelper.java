@@ -13,4 +13,30 @@ package my.AttendanceCalculator;
 //this class is defined specially for handling the database
 public class DatabaseHelper {
     
+    final String DB_FILENAME = "record.db"; // Database file name
+    
+    /**
+     * Constructor
+     */
+    public DatabaseHelper(){
+
+    }
+    
+    
+    /**
+     * Create a new database file if it does not exist and populates it with the 
+     * needed tables
+     */
+    private boolean initialize(){
+        return true;
+    }
+    
+    /**
+     * Check if the database file exists
+     */
+    private boolean isDBFileAvailable(){
+        return true;
+    }
+   
+   
 }

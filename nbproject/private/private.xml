@@ -5,6 +5,7 @@
         <group>
             <file>file:/home/aristechius/NetBeansProjects/AttendanceCalculator/src/my/AttendanceCalculator/SheetGenerationUI.java</file>
             <file>file:/home/aristechius/NetBeansProjects/AttendanceCalculator/src/my/AttendanceCalculator/HomePage.java</file>
+            <file>file:/home/aristechius/NetBeansProjects/AttendanceCalculator/src/my/AttendanceCalculator/DatabaseHelper.java</file>
             <file>file:/home/aristechius/NetBeansProjects/AttendanceCalculator/src/my/AttendanceCalculator/RegistrationUI.java</file>
             <file>file:/home/aristechius/NetBeansProjects/AttendanceCalculator/src/my/AttendanceCalculator/Login.java</file>
         </group>
