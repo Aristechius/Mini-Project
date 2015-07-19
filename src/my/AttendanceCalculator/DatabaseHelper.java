@@ -18,6 +18,14 @@ public class DatabaseHelper {
     
     final String DB_FILENAME = "record.db"; // Database file name
     
+    // Tables and columns
+    final String TABLE_STUDENTS = "students";
+    
+    final String COL_REG_NO     = "reg_no"; 
+    final String COL_FIRSTNAME  = "fistname";
+    final String COL_LASTNAME   = "lastname";
+    final String COL_STAFF_ID   = "staff_id";
+    
     /**
      * Constructor
      */
@@ -38,25 +46,27 @@ public class DatabaseHelper {
           
         // (1) Create the new database and open it
         
-    Connection c = null;
+    Connection conn = null;
        
     Statement stmt = null;
     try {
       Class.forName("org.sqlite.JDBC");
-      c = DriverManager.getConnection("jdbc:sqlite:record.db");
+      conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILENAME);
       System.out.println("Opened database successfully");
 
-      stmt = c.createStatement();
-      String sql = "CREATE TABLE STUDENTS " +
-                   "(REGNO INT PRIMARY KEY     NOT NULL," +
-                   " FIRSTNAME         TEXT    NOT NULL, " + 
-                   " LASTNAME          TEXT     NOT NULL, " + 
-                   " STAFFID           INT NOT NULL "+
+      stmt = conn.createStatement();
+      String sql = "CREATE TABLE " + TABLE_STUDENTS +
+                   "(" + 
+                      COL_REG_NO + " INT PRIMARY KEY NOT NULL, " +
+                      COL_FIRSTNAME + " TEXT NOT NULL, " + 
+                      COL_LASTNAME + " TEXT NOT NULL, " + 
+                      COL_STAFF_ID + " INT NOT NULL "+
                    ");"; 
+      
       stmt.executeUpdate(sql);
       stmt.close();
-      c.close();
-    } catch ( Exception e ) {
+      conn.close();
+    } catch ( ClassNotFoundException | SQLException e ) {
       System.err.println( e.getClass().getName() + ": " + e.getMessage() );
       System.exit(0);
     }
