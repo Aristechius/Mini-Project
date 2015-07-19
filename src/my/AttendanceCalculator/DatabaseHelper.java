@@ -6,6 +6,8 @@
 
 package my.AttendanceCalculator;
 
+import java.io.File;
+
 /**
  *
  * @author aristechius
@@ -45,7 +47,8 @@ public class DatabaseHelper {
      * Check if the database file exists
      */
     private boolean isDBFileAvailable(){
-        return true;
+        File f = new File(DB_FILENAME);
+        return (f.exists() && !f.isDirectory());
     }
    
    
