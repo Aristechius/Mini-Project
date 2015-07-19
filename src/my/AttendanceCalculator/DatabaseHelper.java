@@ -21,7 +21,10 @@ public class DatabaseHelper {
      * Constructor
      */
     public DatabaseHelper(){
-
+        // Initialize a new database if one does not exist
+        if (!isDBFileAvailable()){
+            initialize();
+        }
     }
     
     
