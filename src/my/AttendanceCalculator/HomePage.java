@@ -5,6 +5,8 @@
  */
 package my.AttendanceCalculator;
 
+import java.io.File;
+
 /**
  *
  * @author aristechius
@@ -19,6 +21,22 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
         
         // TODO: Delete this part --- added for testing the database
+        // Delete the existing db
+        try{
+ 
+    		File file = new File("record.db");
+ 
+    		if(file.delete()){
+    			System.out.println(file.getName() + " is deleted!");
+    		}else{
+    			System.out.println("Delete operation is failed.");
+    		}
+ 
+    	}catch(Exception e){
+ 
+    		e.printStackTrace();
+ 
+    	}
         DatabaseHelper db = new DatabaseHelper();
     }
 

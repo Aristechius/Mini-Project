@@ -51,7 +51,8 @@ public class DatabaseHelper {
                    "(REGNO INT PRIMARY KEY     NOT NULL," +
                    " FIRSTNAME         TEXT    NOT NULL, " + 
                    " LASTNAME          TEXT     NOT NULL, " + 
-                   " STAFFID           INT NOT NULL, "; 
+                   " STAFFID           INT NOT NULL "+
+                   ");"; 
       stmt.executeUpdate(sql);
       stmt.close();
       c.close();
