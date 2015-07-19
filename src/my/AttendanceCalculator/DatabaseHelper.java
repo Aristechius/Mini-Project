@@ -6,6 +6,9 @@
 
 package my.AttendanceCalculator;
 import java.sql.*;
+
+import java.io.File;
+
 /**
  *
  * @author aristechius
@@ -19,7 +22,10 @@ public class DatabaseHelper {
      * Constructor
      */
     public DatabaseHelper(){
-
+        // Initialize a new database if one does not exist
+        if (!isDBFileAvailable()){
+            initialize();
+        }
     }
     
     
@@ -67,7 +73,8 @@ public class DatabaseHelper {
      * Check if the database file exists
      */
     private boolean isDBFileAvailable(){
-        return true;
+        File f = new File(DB_FILENAME);
+        return (f.exists() && !f.isDirectory());
     }
    
    
