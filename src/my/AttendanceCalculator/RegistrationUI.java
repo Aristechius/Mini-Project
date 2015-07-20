@@ -58,7 +58,7 @@ public class RegistrationUI extends javax.swing.JFrame {
 
         jLabel8.setText("FIrst Name");
 
-        jLabel9.setText("Second Name");
+        jLabel9.setText("Last Name");
 
         jLabel10.setText("IDNo.");
 
