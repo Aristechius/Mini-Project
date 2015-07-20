@@ -9,6 +9,6 @@ package my.AttendanceCalculator;
  *
  * @author aristechius
  */
-public class students {
+public class Student {
     
 }

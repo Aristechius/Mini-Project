@@ -9,7 +9,7 @@ package my.AttendanceCalculator;
  *
  * @author aristechius
  */
-public class staffs {
+public class Staff {
     String firstName,lastName;
     Float ID;
     
