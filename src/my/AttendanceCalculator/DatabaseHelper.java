@@ -21,19 +21,20 @@ public class DatabaseHelper {
     final String DB_FILENAME = "record.db"; // Database file name
     
     // Tables and columns
-    final String TABLE_STUDENTS = "students";
-    final String TABLE_ATTENDANCE= "attendance";
-    final String TABLE_STAFFS = "staffs";
+    final String TABLE_STUDENTS    = "students";
+    final String TABLE_ATTENDANCE  = "attendances";
+    final String TABLE_STAFFS      = "staffs";
     
     final String COL_REG_NO     = "reg_no"; 
     final String COL_FIRSTNAME  = "fistname";
     final String COL_LASTNAME   = "lastname";
     final String COL_STAFF_ID   = "staff_id";
-    final String COL_ABSENTHRS  = "absent_hours";
-    final String COL_DATE       =  " date ";
-    final String COL_STAFF_FIRSTNAME = "staff_first_name";
-    final String COL_STAFF_LASTNAME = "Staff_Last_Name";
-    final String COL_ATTENDANCE_ID =  "attendance_id";
+    final String COL_ABSENT_HRS = "absent_hours";
+    final String COL_DATE       =  "date";
+    final String COL_STAFF_FIRSTNAME = "firstname";
+    final String COL_STAFF_LASTNAME  = "lastname";
+    final String COL_STAFF_PASSWORD  = "password";
+    final String COL_ATTENDANCE_ID   =  "attendance_id";
     /**
      * Constructor
      */
@@ -54,41 +55,48 @@ public class DatabaseHelper {
         try {
             Connection conn = getDBConnection();
             Statement stmt = conn.createStatement();
+            String sql;
+            
+            //creating table staffs
+            sql = "CREATE TABLE " + TABLE_STAFFS +
+                    "(" + 
+                       COL_STAFF_ID + " INT PRIMARY KEY NOT NULL, " +
+                       COL_STAFF_FIRSTNAME + " TEXT NOT NULL, " + 
+                       COL_STAFF_LASTNAME + " TEXT NOT NULL, " + 
+                       COL_STAFF_PASSWORD + " TEXT NOT NULL " +
+                    ");"; 
+            stmt.executeUpdate(sql);
 
             //creating the table students
-            String sql = "CREATE TABLE " + TABLE_STUDENTS +
-                         "(" + 
-                            COL_REG_NO + " INT PRIMARY KEY NOT NULL, " +
-                            COL_FIRSTNAME + " TEXT NOT NULL, " + 
-                            COL_LASTNAME + " TEXT NOT NULL, " + 
-                            COL_STAFF_ID + " INT NOT NULL "+
-                         ");"; 
+            sql = "CREATE TABLE " + TABLE_STUDENTS +
+                    "(" + 
+                       COL_REG_NO + " INT PRIMARY KEY NOT NULL, " +
+                       COL_FIRSTNAME + " TEXT NOT NULL, " + 
+                       COL_LASTNAME + " TEXT NOT NULL, " + 
+                       COL_STAFF_ID + " INT NOT NULL, "+
+                       "FOREIGN KEY ("+ COL_STAFF_ID+ ") REFERENCES "+ 
+                           TABLE_STAFFS +"("+COL_STAFF_ID+")" +
+                    ");"; 
             stmt.executeUpdate(sql);
 
             //creating table Attendance 
             sql = "CREATE TABLE " + TABLE_ATTENDANCE +
-                         "(" + 
-                            COL_ATTENDANCE_ID + " INT PRIMARY KEY NOT NULL, " +
-                            COL_REG_NO + " INT NOT NULL, " + 
-                            COL_ABSENTHRS + " INT NOT NULL, " + 
-                            COL_DATE + "INT NOT NULL, " +
-                            COL_STAFF_ID + " INT NOT NULL "+
-                         ");";
-             stmt.executeUpdate(sql);
-
-              //creating table staffs
-              sql = "CREATE TABLE " + TABLE_STAFFS +
-                         "(" + 
-                            COL_STAFF_ID + " INT PRIMARY KEY NOT NULL, " +
-                            COL_STAFF_FIRSTNAME + " INT NOT NULL, " + 
-                            COL_STAFF_LASTNAME + " INT NOT NULL " + 
-
-                            ");"; 
+                    "(" + 
+                       COL_ATTENDANCE_ID + " INT PRIMARY KEY NOT NULL, " +
+                       COL_REG_NO + " INT NOT NULL, " + 
+                       COL_ABSENT_HRS + " INT NOT NULL, " + 
+                       COL_DATE + " TEXT NOT NULL, " +
+                       COL_STAFF_ID + " INT NOT NULL, "+
+                       "FOREIGN KEY ("+ COL_REG_NO+ ") REFERENCES "+ 
+                           TABLE_STUDENTS +"("+COL_REG_NO+"), " +
+                       "FOREIGN KEY ("+ COL_STAFF_ID+ ") REFERENCES "+ 
+                           TABLE_STAFFS +"("+COL_STAFF_ID+")" +
+                    ");";
             stmt.executeUpdate(sql);
 
             stmt.close();
             conn.close();
-        } catch ( Exception e ) {
+        } catch ( SQLException e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage());
             return false;
         }
