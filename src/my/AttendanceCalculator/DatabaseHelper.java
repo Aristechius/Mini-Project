@@ -85,7 +85,7 @@ public class DatabaseHelper {
                       COL_STAFF_ID + " INT PRIMARY KEY NOT NULL, " +
                       COL_STAFF_FIRSTNAME + " INT NOT NULL, " + 
                       COL_STAFF_LASTNAME + " INT NOT NULL, " + 
-                      COL_STAFF_ID + " INT NOT NULL "+
+                      
                    ");"; 
       
       stmt.executeUpdate(sql);
