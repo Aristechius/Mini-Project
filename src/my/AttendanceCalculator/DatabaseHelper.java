@@ -28,7 +28,7 @@ public class DatabaseHelper {
     final String COL_LASTNAME   = "lastname";
     final String COL_STAFF_ID   = "staff_id";
     final String COL_ABSENTHRS  = "absent_hours";
-    final String COL_DATE       =    "date";
+    final String COL_DATE       =  " date ";
     final String COL_STAFF_FIRSTNAME = "staff_first_name";
     final String COL_STAFF_LASTNAME = "Staff_Last_Name";
     final String COL_ATTENDANCE_ID =  "attendance_id";
@@ -69,6 +69,7 @@ public class DatabaseHelper {
                       COL_LASTNAME + " TEXT NOT NULL, " + 
                       COL_STAFF_ID + " INT NOT NULL "+
                    ");"; 
+      stmt.executeUpdate(sql);
       //creating table Attendance 
       sql = "CREATE TABLE " + TABLE_ATTENDANCE +
                    "(" + 
@@ -78,15 +79,15 @@ public class DatabaseHelper {
                       COL_DATE + "INT NOT NULL, " +
                       COL_STAFF_ID + " INT NOT NULL "+
                    ");";
-       
+       stmt.executeUpdate(sql);
         //creating table staffs
         sql = "CREATE TABLE " + TABLE_STAFFS +
                    "(" + 
                       COL_STAFF_ID + " INT PRIMARY KEY NOT NULL, " +
                       COL_STAFF_FIRSTNAME + " INT NOT NULL, " + 
-                      COL_STAFF_LASTNAME + " INT NOT NULL, " + 
-                      
-                   ");"; 
+                      COL_STAFF_LASTNAME + " INT NOT NULL " + 
+                     
+                      ");"; 
       
       stmt.executeUpdate(sql);
       stmt.close();
