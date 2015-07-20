@@ -8,6 +8,8 @@ package my.AttendanceCalculator;
 import java.sql.*;
 
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -49,15 +51,9 @@ public class DatabaseHelper {
      */
     private boolean initialize(){ 
         // Create the new database and open it
-        Connection conn = null;
-        Statement stmt = null;
-
         try {
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILENAME);
-            System.out.println("Opened database successfully");
-
-            stmt = conn.createStatement();
+            Connection conn = getDBConnection();
+            Statement stmt = conn.createStatement();
 
             //creating the table students
             String sql = "CREATE TABLE " + TABLE_STUDENTS +
@@ -92,8 +88,8 @@ public class DatabaseHelper {
 
             stmt.close();
             conn.close();
-        } catch ( ClassNotFoundException | SQLException e ) {
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage());
             return false;
         }
         
@@ -109,6 +105,41 @@ public class DatabaseHelper {
         File f = new File(DB_FILENAME);
         return (f.exists() && !f.isDirectory());
     }
+    
+    /**
+     *  Connect to the database
+     */
+    private Connection getDBConnection(){
+        Connection conn = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILENAME);
+            System.out.println("Opened database successfully");
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(DatabaseHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        return conn;
+    }
    
+    /**
+     * Check if the staff has valid credentials
+     */
+    public boolean isStaffValid(Staff staff){
+        // Connect to the database
+        Connection conn = getDBConnection();
+        
+        try {
+            Statement stmt = conn.createStatement();
+            
+            // Query the DB to confirm the staff's details
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //
+        return false;
+    }
    
 }
