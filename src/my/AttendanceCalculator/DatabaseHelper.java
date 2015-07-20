@@ -47,62 +47,58 @@ public class DatabaseHelper {
      * Create a new database file if it does not exist and populates it with the 
      * needed tables
      */
-    private boolean initialize(){
-        // If database file doesn't exist:
-          
-        // (1) Create the new database and open it
-        
-    Connection conn = null;
-       
-    Statement stmt = null;
-    try {
-      Class.forName("org.sqlite.JDBC");
-      conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILENAME);
-      System.out.println("Opened database successfully");
+    private boolean initialize(){ 
+        // Create the new database and open it
+        Connection conn = null;
+        Statement stmt = null;
 
-      stmt = conn.createStatement();
-      //creating the table students
-      String sql = "CREATE TABLE " + TABLE_STUDENTS +
-                   "(" + 
-                      COL_REG_NO + " INT PRIMARY KEY NOT NULL, " +
-                      COL_FIRSTNAME + " TEXT NOT NULL, " + 
-                      COL_LASTNAME + " TEXT NOT NULL, " + 
-                      COL_STAFF_ID + " INT NOT NULL "+
-                   ");"; 
-      stmt.executeUpdate(sql);
-      //creating table Attendance 
-      sql = "CREATE TABLE " + TABLE_ATTENDANCE +
-                   "(" + 
-                      COL_ATTENDANCE_ID + " INT PRIMARY KEY NOT NULL, " +
-                      COL_REG_NO + " INT NOT NULL, " + 
-                      COL_ABSENTHRS + " INT NOT NULL, " + 
-                      COL_DATE + "INT NOT NULL, " +
-                      COL_STAFF_ID + " INT NOT NULL "+
-                   ");";
-       stmt.executeUpdate(sql);
-        //creating table staffs
-        sql = "CREATE TABLE " + TABLE_STAFFS +
-                   "(" + 
-                      COL_STAFF_ID + " INT PRIMARY KEY NOT NULL, " +
-                      COL_STAFF_FIRSTNAME + " INT NOT NULL, " + 
-                      COL_STAFF_LASTNAME + " INT NOT NULL " + 
-                     
-                      ");"; 
-      
-      stmt.executeUpdate(sql);
-      stmt.close();
-      conn.close();
-    } catch ( ClassNotFoundException | SQLException e ) {
-      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-      System.exit(0);
-    }
-    System.out.println("Table created successfully");
-  
-    
-        // (3) Create the Staffs table
-        
-        // (4) Create the Attendees table
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILENAME);
+            System.out.println("Opened database successfully");
 
+            stmt = conn.createStatement();
+
+            //creating the table students
+            String sql = "CREATE TABLE " + TABLE_STUDENTS +
+                         "(" + 
+                            COL_REG_NO + " INT PRIMARY KEY NOT NULL, " +
+                            COL_FIRSTNAME + " TEXT NOT NULL, " + 
+                            COL_LASTNAME + " TEXT NOT NULL, " + 
+                            COL_STAFF_ID + " INT NOT NULL "+
+                         ");"; 
+            stmt.executeUpdate(sql);
+
+            //creating table Attendance 
+            sql = "CREATE TABLE " + TABLE_ATTENDANCE +
+                         "(" + 
+                            COL_ATTENDANCE_ID + " INT PRIMARY KEY NOT NULL, " +
+                            COL_REG_NO + " INT NOT NULL, " + 
+                            COL_ABSENTHRS + " INT NOT NULL, " + 
+                            COL_DATE + "INT NOT NULL, " +
+                            COL_STAFF_ID + " INT NOT NULL "+
+                         ");";
+             stmt.executeUpdate(sql);
+
+              //creating table staffs
+              sql = "CREATE TABLE " + TABLE_STAFFS +
+                         "(" + 
+                            COL_STAFF_ID + " INT PRIMARY KEY NOT NULL, " +
+                            COL_STAFF_FIRSTNAME + " INT NOT NULL, " + 
+                            COL_STAFF_LASTNAME + " INT NOT NULL " + 
+
+                            ");"; 
+            stmt.executeUpdate(sql);
+
+            stmt.close();
+            conn.close();
+        } catch ( ClassNotFoundException | SQLException e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            return false;
+        }
+        
+        System.out.println("Table created successfully");
+ 
         return true;
     }
     
