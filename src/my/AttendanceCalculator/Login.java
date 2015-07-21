@@ -64,7 +64,11 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setText("Password");
 
-        Password.setText("jPasswordField1");
+        Password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -146,6 +150,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
      // Upon clicking the Login Button
+        /*
       int ID;
       String staffPassword;
       ID= Integer.parseInt(staffID.getText());
@@ -153,7 +158,27 @@ public class Login extends javax.swing.JFrame {
     //didn't know how to set these values into the objects
       Staff staff1=new Staff();
       DatabaseHelper dbh= new DatabaseHelper();    
+        */
+        
+        // Extract credentials
+        int id = Integer.parseInt(staffID.getText());
+        String password = String.valueOf(Password.getPassword());
+        
+        Staff staff = new Staff(id, "", "", password);
+        
+        DatabaseHelper db = new DatabaseHelper();
+        
+        if (db.isStaffValid(staff)){
+            System.out.println("Login Passed!!!");
+        }else{
+            System.out.println("Login Declined!!!");
+        }
+        
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordActionPerformed
 
     /**
      * @param args the command line arguments
