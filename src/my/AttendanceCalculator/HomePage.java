@@ -22,6 +22,7 @@ public class HomePage extends javax.swing.JFrame {
         
         // TODO: Delete this part --- added for testing the database
         // Delete the existing db
+        /*
         try{
  
     		File file = new File("record.db");
@@ -37,7 +38,18 @@ public class HomePage extends javax.swing.JFrame {
     		e.printStackTrace();
  
     	}
+        */
+        
+        Staff sampleStaff = new Staff();
+        sampleStaff.setID(1);
+        sampleStaff.setPassword("now");
+        
         DatabaseHelper db = new DatabaseHelper();
+        if(db.isStaffValid(sampleStaff)){
+            System.out.println("Login SUCCEEDED");
+        }else{
+            System.out.println("Login FAILED");
+        }
     }
 
     /**

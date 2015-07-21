@@ -144,15 +144,22 @@ public class DatabaseHelper {
             // Query the DB to confirm the staff's details
             //my idea was retrieve the password entered by the user
             // then compare if the password matches the staffID saved in the table
-            ResultSet rs = stmt.executeQuery( "SELECT STAFF_ID FROM STAFF WHERE FIRSTNAME = staff ;" );
+            int id = staff.getID();
+            String password = staff.getPassword();
             
+            String sql = "SELECT COUNT(*) AS result FROM "+ TABLE_STAFFS +
+                         " WHERE " + COL_STAFF_ID + "=" + id + " AND "
+                                   + COL_STAFF_PASSWORD + "='" + password + "';";
             
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            if(rs.next() && rs.getInt("result") > 0) return true;
+            else return false;
+                       
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseHelper.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
-        
-        //
-        return false;
     }
    
 }
