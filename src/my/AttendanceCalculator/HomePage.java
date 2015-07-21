@@ -22,23 +22,20 @@ public class HomePage extends javax.swing.JFrame {
         
         // TODO: Delete this part --- added for testing the database
         // Delete the existing db
-        
+        /*
         try{
- 
-    		File file = new File("record.db");
- 
-    		if(file.delete()){
-    			System.out.println(file.getName() + " is deleted!");
-    		}else{
-    			System.out.println("Delete operation is failed.");
-    		}
+            File file = new File("record.db");
+
+            if(file.delete()){
+                System.out.println(file.getName() + " is deleted!");
+            }else{
+                System.out.println("Delete operation is failed.");
+            }
  
     	}catch(Exception e){
- 
-    		e.printStackTrace();
- 
+            e.printStackTrace();
     	}
-        
+        */
         
         Staff sampleStaff = new Staff();
         sampleStaff.setID(1);
