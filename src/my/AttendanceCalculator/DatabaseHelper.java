@@ -140,7 +140,12 @@ public class DatabaseHelper {
         try {
             Statement stmt = conn.createStatement();
             
+            
             // Query the DB to confirm the staff's details
+            //my idea was retrieve the password entered by the user
+            // then compare if the password matches the staffID saved in the table
+            ResultSet rs = stmt.executeQuery( "SELECT STAFF_ID FROM STAFF WHERE FIRSTNAME = staff ;" );
+            
             
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseHelper.class.getName()).log(Level.SEVERE, null, ex);

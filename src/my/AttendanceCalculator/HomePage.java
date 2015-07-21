@@ -78,7 +78,7 @@ public class HomePage extends javax.swing.JFrame {
         rBtnLogin.setText("Login");
 
         buttonGroup1.add(rBtnRegistration);
-        rBtnRegistration.setText("Register A new Class");
+        rBtnRegistration.setText("Register");
 
         btnHomeNext.setText("Next");
         btnHomeNext.addActionListener(new java.awt.event.ActionListener() {
