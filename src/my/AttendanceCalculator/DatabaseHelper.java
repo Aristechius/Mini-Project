@@ -132,6 +132,8 @@ public class DatabaseHelper {
    
     /**
      * Check if the staff has valid credentials
+     * @param staff -- staff to be authenticated
+     * @return true if the credentials are correct and false otherwise
      */
     public boolean isStaffValid(Staff staff){
         // Connect to the database
@@ -150,8 +152,7 @@ public class DatabaseHelper {
             
             ResultSet rs = stmt.executeQuery();
             
-            if(rs.next() && rs.getInt("result") > 0) return true;
-            else return false;
+            return (rs.next() && rs.getInt("result") > 0);
                        
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseHelper.class.getName()).log(Level.SEVERE, null, ex);
