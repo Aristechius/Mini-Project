@@ -36,7 +36,7 @@ public class Login extends javax.swing.JFrame {
         staffID = new javax.swing.JTextField();
         firstName = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        password = new javax.swing.JTextField();
+        Password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +47,11 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Staff ID");
 
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         btnBackHome.setText("Back");
         btnBackHome.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +63,8 @@ public class Login extends javax.swing.JFrame {
         firstName.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setText("Password");
+
+        Password.setText("jPasswordField1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -80,13 +87,11 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(firstName, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(staffID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                            .addComponent(password))
+                            .addComponent(Password))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnBackHome, btnLogin});
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {password, staffID});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +107,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBackHome)
@@ -138,6 +143,17 @@ public class Login extends javax.swing.JFrame {
         Login.this.setVisible(false);
         
     }//GEN-LAST:event_btnBackHomeActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+     // Upon clicking the Login Button
+      int ID;
+      String staffPassword;
+      ID= Integer.parseInt(staffID.getText());
+      staffPassword = String.parseString( Password.getPassword();
+    //didn't know how to set these values into the objects
+      Staff staff1=new Staff();
+      DatabaseHelper dbh= new DatabaseHelper();    
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,6 +191,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField Password;
     private javax.swing.JButton btnBackHome;
     private javax.swing.JButton btnLogin;
     private javax.swing.JComboBox firstName;
@@ -182,7 +199,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField password;
     private javax.swing.JTextField staffID;
     // End of variables declaration//GEN-END:variables
 }
