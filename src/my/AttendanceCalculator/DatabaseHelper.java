@@ -168,6 +168,9 @@ public class DatabaseHelper {
         Connection conn= getDBConnection();
         
         try{
+        //switching to auto commit
+        conn.setAutoCommit(false);
+        
         String sql= "INSERT INTO STAFFS (staff_id,firstname, " +
                 "lastname ,password) " + "VALUES(?,?,?,? );";
        
@@ -177,9 +180,9 @@ public class DatabaseHelper {
         stmt.setString(3,staff.getLastName());
         stmt.setString(4,staff.getPassword());
        
-       conn.commit(); 
-       stmt.executeUpdate();
         
+       stmt.executeUpdate();
+       conn.commit(); 
        stmt.close();
         
         conn.close();
