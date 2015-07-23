@@ -172,8 +172,8 @@ public class DatabaseHelper {
        
         //inserting values into the table
         try{
-        String sql= "INSERT INTO STAFFS (STAFF_ID,FIRSTNAME, " +
-                "LASTNAME ,PASSWORD) " + "VALUES( " + a + ","+ b + ","+ c +","
+        String sql= "INSERT INTO STAFFS (staff_id,firstname, " +
+                "lastname ,password) " + "VALUES( " + a + ","+ b + ","+ c +","
                 + d + ");";
        
         stmt= conn.createStatement(); 
