@@ -163,22 +163,18 @@ public class DatabaseHelper {
     public void addStaff(Staff staff){
         //connecting to database
         Connection conn= getDBConnection();
-        Statement stmt=null;
-        //get values from staff object
-        int a = staff.getID();
-        String b = staff.getFirstName();
-        String c = staff.getLastName();
-        String d = staff.getPassword();
-       
-        //inserting values into the table
+        
         try{
         String sql= "INSERT INTO STAFFS (staff_id,firstname, " +
-                "lastname ,password) " + "VALUES( " + a + ","+ b + ","+ c +","
-                + d + ");";
+                "lastname ,password) " + "VALUES(?,?,?,? );";
        
-        stmt= conn.createStatement(); 
+        PreparedStatement stmt= conn.prepareStatement(sql); 
+        stmt.setInt(1,staff.getID());
+        stmt.setString(2,staff.getFirstName());
+        stmt.setString(3,staff.getLastName());
+        stmt.setString(4,staff.getPassword());
         
-        stmt.executeUpdate(sql);
+       stmt.executeUpdate(sql);
         stmt.close();
         conn.commit();
         conn.close();
