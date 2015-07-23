@@ -151,14 +151,17 @@ public class DatabaseHelper {
             
             
             ResultSet rs = stmt.executeQuery();
-            
+            conn.close(); 
+       
             return (rs.next() && rs.getInt("result") > 0);
                        
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseHelper.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
+       
     }
+    
     
     public void addStaff(Staff staff){
         //connecting to database
@@ -173,10 +176,12 @@ public class DatabaseHelper {
         stmt.setString(2,staff.getFirstName());
         stmt.setString(3,staff.getLastName());
         stmt.setString(4,staff.getPassword());
+       
+       conn.commit(); 
+       stmt.executeUpdate();
         
-       stmt.executeUpdate(sql);
-        stmt.close();
-        conn.commit();
+       stmt.close();
+        
         conn.close();
        
     
