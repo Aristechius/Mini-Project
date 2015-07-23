@@ -25,8 +25,8 @@ public class DatabaseHelper {
     final String TABLE_ATTENDANCE  = "attendances";
     final String TABLE_STAFFS      = "staffs";
     
-    final String COL_REG_NO     = "reg_no"; 
-    final String COL_FIRSTNAME  = "fistname";
+    final String COL_REG_NO     = "reg_no";
+    final String COL_FIRSTNAME  = "firstname";
     final String COL_LASTNAME   = "lastname";
     final String COL_STAFF_ID   = "staff_id";
     final String COL_ABSENT_HRS = "absent_hours";
@@ -159,5 +159,37 @@ public class DatabaseHelper {
             return false;
         }
     }
-   
-}
+    
+    public void addStaff(Staff staff){
+        //connecting to database
+        Connection conn= getDBConnection();
+        Statement stmt=null;
+        //get values from staff object
+        int a = staff.getID();
+        String b = staff.getFirstName();
+        String c = staff.getLastName();
+        String d = staff.getPassword();
+       
+        //inserting values into the table
+        try{
+        String sql= "INSERT INTO STAFFS (STAFF_ID,FIRSTNAME, " +
+                "LASTNAME ,PASSWORD) " + "VALUES( " + a + ","+ b + ","+ c +","
+                + d + ");";
+       
+        stmt= conn.createStatement(); 
+        
+        stmt.executeUpdate(sql);
+        stmt.close();
+        conn.commit();
+        conn.close();
+       
+    
+       } catch (Exception e) {
+            System.err.println(e.getClass().getName() +":" + e.getMessage());
+            System.exit(0);
+        }
+    System.out.println("added a new staff successfully");
+    }
+ }    
+       
+    
